@@ -1,0 +1,46 @@
+<h1 class="text-primary text-center">Ingrese Producto</h1>
+<div class="container">
+    <div class="form-group">
+        <label for="title" class="font-italic font-weight-bold">Nombre</label>
+        <input class="form-control" type="text" name="title" id="title" placeholder="Ingrese un Titulo">
+    </div>
+    <div class="form-group">
+        <label for="price" class="font-italic font-weight-bold">Precio</label>
+        <input class="form-control" type="text" name="price" id="price" placeholder="Ingrese un Precio">
+    </div>
+    <div class="form-group">
+        <label for="thumbnail" class="font-italic font-weight-bold">Foto URL</label>
+        <input class="form-control" type="text" name="thumbnail" id="thumbnail" placeholder="Ingrese una URL">
+    </div>
+    <button class="btn btn-success" onclick="cargarProducto()">Guardar</button>
+    <hr>
+    <h4 id="mensajeProducto"></h4>
+</div>
+
+<div id="template">
+    <h2 class='text-primary text-center'>Lista de Productos</h2>
+    <div class='container'>
+        {{#if hayProductos}}
+        <table class='table table-dark'>
+            <thead>
+                <th>Nombre</th>
+                <th>Precio</th>
+                <th>Foto</th>
+            </thead>
+            <tbody>
+                {{#each productos}}
+                <tr>
+                    <td>{{this.title}}</td>
+                    <td>{{this.price}}</td>
+                    <td><img src='{{this.thumbnail}}' width='50px' height='50px'></td>
+                </tr>
+                {{/each}}
+            </tbody>
+        </table>
+        {{else}}
+        <div class='container-fluid'>
+            <h2 class='alert alert-danger text-center'>No hay productos cargados</h2>
+        </div>
+        {{/if}}
+    </div>
+</div>
